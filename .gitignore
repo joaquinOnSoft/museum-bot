@@ -8,6 +8,7 @@ build
 .project
 .settings/
 bin/
+.DS_Store
 
 # Log files and other files generated in test or manual execution
 *.log
