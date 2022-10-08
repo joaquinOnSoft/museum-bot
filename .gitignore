@@ -1,0 +1,14 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+.classpath
+.project
+.settings/
+bin/
+
+# Log files and other files generated in test or manual execution
+*.log
+*.back
