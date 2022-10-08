@@ -1,5 +1,6 @@
 package com.joaquinonsoft.bot.museum.met.api;
 
+import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObjects;
 import com.joaquinonsoft.bot.net.AbstractAPIWrapper;
 
@@ -12,7 +13,9 @@ public class MetMuseumAPI extends AbstractAPIWrapper{
 	
 	public static final String URL_BASE = "https://collectionapi.metmuseum.org/public";
 	public static final String METHOD_OBJECTS = "/collection/v1/objects";
+	
 	/**
+	 * Objects 
 	 * <strong>GET<strong> 
 	 * <pre>
 	 * /public/collection/v1/objects
@@ -28,4 +31,24 @@ public class MetMuseumAPI extends AbstractAPIWrapper{
 		
 		return metObjects;
 	}
+	
+	/**
+	 * Object
+	 * <strong>GET<strong> 
+	 * <pre>
+	 * /public/collection/v1/objects/[objectID] 
+	 * </pre>
+	 * returns a record for an object, containing all open access data about that object, including its image (if the image is available under Open Access)
+	 * */
+	public MetMuseumObject object(int id) {
+		MetMuseumObject metObject = null;
+		
+		String result = get(URL_BASE + METHOD_OBJECTS + "/" + id, null, null);
+		if(result != null) {
+			metObject = (MetMuseumObject) jsonStringToObject(result, MetMuseumObject.class);
+		}
+		
+		return metObject;
+	}	
+	
 }
