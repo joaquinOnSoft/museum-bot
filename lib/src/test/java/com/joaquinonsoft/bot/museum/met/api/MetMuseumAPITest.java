@@ -27,5 +27,6 @@ public class MetMuseumAPITest {
 		assertEquals("Emma Juch, from the Actresses series (N253-A) issued by P. Lorillard Company to promote Tiger Fine Cut Tobacco", metObject.getTitle());
 		assertEquals("P. Lorillard Company", metObject.getArtistDisplayName());
 		assertEquals("1880s", metObject.getObjectDate());
+		assertEquals("", metObject.getPrimaryImage());
 	}	
 }
