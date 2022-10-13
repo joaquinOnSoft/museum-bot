@@ -1,8 +1,5 @@
 package com.joaquinonsoft.bot.museum.met;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObjects;
 import com.joaquinonsoft.bot.net.AbstractAPIWrapper;

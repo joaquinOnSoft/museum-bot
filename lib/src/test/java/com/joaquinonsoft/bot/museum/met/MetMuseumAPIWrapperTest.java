@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import com.joaquinonsoft.bot.museum.met.MetMuseumAPIWrapper;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 
 public class MetMuseumAPIWrapperTest {
