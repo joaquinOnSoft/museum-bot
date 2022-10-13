@@ -5,7 +5,16 @@ import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObjects;
 import com.joaquinonsoft.bot.net.AbstractAPIWrapper;
 
 /**
- * The Metropolitan Museum of Art Collection API
+ * <strong>Metropolitan Museum of Art Met Collection API</strong>
+ * New York City's Metropolitan Museum of Art contains over 5000 
+ * years of art from around the world in its collection. The 
+ * Metropolitan Museum of Art Met Collection APITrack this API 
+ * is a Public API released in 2018 that provides select datasets 
+ * of information on more than 400,000 artworks for unrestricted 
+ * commercial and non commercial use. The API provides access to 
+ * all of the Met's Open Access data and to corresponding high 
+ * resolution images.
+ * 
  * @see https://metmuseum.github.io/#search
  * @author Joaquín Garzón
  */
