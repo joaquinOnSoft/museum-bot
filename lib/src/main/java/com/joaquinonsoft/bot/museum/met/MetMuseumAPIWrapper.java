@@ -1,4 +1,4 @@
-package com.joaquinonsoft.bot.museum.met.api;
+package com.joaquinonsoft.bot.museum.met;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

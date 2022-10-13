@@ -1,7 +1,8 @@
-package com.joaquinonsoft.bot.museum.met.api;
+package com.joaquinonsoft.bot.museum.met;
 
 import org.junit.jupiter.api.Test;
 
+import com.joaquinonsoft.bot.museum.met.MetMuseumAPI;
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObjects;
 

@@ -1,4 +1,4 @@
-package com.joaquinonsoft.bot.museum.nhm.api;
+package com.joaquinonsoft.bot.museum.nhm;
 
 /**
  * <strong>Natural History Museum REST API</strong>
