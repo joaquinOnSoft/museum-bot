@@ -5,7 +5,7 @@ a one or several channels like Twitter, Telegram...
 
 ## Museums 
 
-This project extract information for the following sources:
+This project extract information for the following sources:	
 
 ### Metropolitan Museum of Art Met Collection API
 New York City's Metropolitan Museum of Art contains over 5000 
@@ -31,5 +31,12 @@ Smithsonian's 19 museums, 9 research centers, libraries, archives,
 and the National Zoo.
 
 > **SEE:**
-> [API Endpoint](https://api.si.edu/openaccess/api/v1.0/)
+> [API Endpoint](https://api.si.edu/openaccess/api/v1.0/) and
 > [API Portal / Home Page](https://www.si.edu/openaccess/devtools)
+
+
+### Why there are not Spanish museum?
+
+Just because is a serious lack of Spanish Museums Open API availability. So, I decided to 
+start from some of the Museums which provides Open API. Some of then are listed in this
+article: [Top 10 APIs for Museums](https://www.programmableweb.com/news/top-10-apis-museums/brief/2020/12/26)
