@@ -1,5 +1,5 @@
-/*
- *   (C) Copyright 2022 JoaquinOnSoft.com and others.
+/**   
+ *  (C) Copyright 2022 joaquinonsoft.com and others.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.

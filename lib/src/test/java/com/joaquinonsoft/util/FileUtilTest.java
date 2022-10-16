@@ -37,7 +37,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class FileUtilTest{
-	private static final String XML_EXAMPLE_FILE_NAME = "1257656312529186816.xml";
+	private static final String PROPERTIES_EXAMPLE_FILE_NAME = "smithsonian.properties";
 
 	@Test
 	public void testDeleteFile() {
@@ -48,7 +48,6 @@ public class FileUtilTest{
 			myWriter.write("Files in Java might be tricky, but it is fun enough!");
 			myWriter.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			fail(e.getMessage());
 		}
 
@@ -59,7 +58,7 @@ public class FileUtilTest{
 	
 	@Test
 	public void testGetFileFromResources() {
-		File f = FileUtil.getFileFromResources(XML_EXAMPLE_FILE_NAME);
+		File f = FileUtil.getFileFromResources(PROPERTIES_EXAMPLE_FILE_NAME);
 		assertNotNull(f);
 		assertTrue(f.exists());
 	}
@@ -80,15 +79,18 @@ public class FileUtilTest{
 	@Test
 	public void filterFilesByExtension() {
 		
-		URL resource = getClass().getClassLoader().getResource(XML_EXAMPLE_FILE_NAME);
+		URL resource = getClass().getClassLoader().getResource(PROPERTIES_EXAMPLE_FILE_NAME);
 		if(resource != null) {			
-			File[] files = FileUtil.filterFilesByExtension(resource.getPath().replace(XML_EXAMPLE_FILE_NAME, ""), ".xml");
+			File[] files = FileUtil.filterFilesByExtension(
+					resource.getPath().replace(PROPERTIES_EXAMPLE_FILE_NAME, ""), 
+					".properties");
+			
 			assertNotNull(files);
 			assertEquals(1, files.length);
-			assertEquals(XML_EXAMPLE_FILE_NAME, files[0].getName());
+			assertEquals(PROPERTIES_EXAMPLE_FILE_NAME, files[0].getName());
 		}
 		else {
-			fail("Resource `1257656312529186816.xml` not found.");
+			fail("Resource `smithsonian.properties` not found.");
 		}
 	}
 }
