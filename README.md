@@ -37,6 +37,5 @@ and the National Zoo.
 
 ### Why there are not Spanish museum?
 
-Just because is a serious lack of Spanish Museums Open API availability. So, I decided to 
-start from some of the Museums which provides Open API. Some of then are listed in this
+Just because there is a serious lack of Spanish Museums Open API availability. So, I decided to start with some of the Museums which provide Open API. Some of then are listed in this
 article: [Top 10 APIs for Museums](https://www.programmableweb.com/news/top-10-apis-museums/brief/2020/12/26)
