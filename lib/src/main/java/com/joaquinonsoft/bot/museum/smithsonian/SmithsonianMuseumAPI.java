@@ -136,6 +136,8 @@ public class SmithsonianMuseumAPI extends AbstractAPIWrapper {
 		List<NameValuePair> params = new LinkedList<NameValuePair>();
 		params.add(new BasicNameValuePair("api_key", apiKey));
 		params.add(new BasicNameValuePair("q", q));
+		params.add(new BasicNameValuePair("start", Integer.toString(start)));
+		params.add(new BasicNameValuePair("rows", Integer.toString(rows)));
 		
 		String result = get(url, null, params);
 		if(result != null) {

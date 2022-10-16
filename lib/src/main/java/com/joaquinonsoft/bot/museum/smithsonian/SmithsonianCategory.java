@@ -23,7 +23,7 @@ package com.joaquinonsoft.bot.museum.smithsonian;
  * The category you are filtering against..
  * Valid values: 
  * 	 art_design, history_culture, science_technology
- * @author Joaquín Garzón
+ * @author JoaquÃ­n GarzÃ³n
  */
 public enum SmithsonianCategory {
 	ART_DESING("art_design"), 
