@@ -41,7 +41,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author Joaquín Garzón
- * @since 20.2
  */
 public abstract class AbstractAPIWrapper {
 
