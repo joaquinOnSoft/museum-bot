@@ -24,6 +24,7 @@ import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Medium;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Name;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Row;
+import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Record;
 
 public class MuseumAssetTransformer {
 	private static final String LABEL_ARTIST = "Artist";
@@ -92,4 +93,31 @@ public class MuseumAssetTransformer {
 		
 		return asset;
 	}	
+	
+	public static MuseumAsset toMusseumAsset(Record vaRecord) {
+		MuseumAsset asset = null;
+		
+		if(vaRecord != null) {
+			String author = null;
+			String imageURL = null;
+			
+			if(vaRecord.getPrimaryMaker() != null) {
+				author = vaRecord.getPrimaryMaker().getName();
+			}
+			
+			if(vaRecord.getImages() != null) {
+				imageURL = vaRecord.getImages().getPrimaryThumbnail();
+			}
+						
+			asset = new MuseumAsset(
+					vaRecord.getPrimaryTitle(),
+					author,
+					vaRecord.getPrimaryDate(),
+					imageURL					
+					);
+		}
+		
+		return asset;
+	}
+	
 }

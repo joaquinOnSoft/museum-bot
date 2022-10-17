@@ -27,7 +27,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.joaquinonsoft.bot.museum.smithsonian.pojo.SmithsonianCategorySearchContents;
 import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.VictoriaAndAlbertRecords;
 import com.joaquinonsoft.bot.net.AbstractAPIWrapper;
 
