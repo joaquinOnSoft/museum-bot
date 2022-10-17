@@ -35,6 +35,14 @@ and the National Zoo.
 > [API Portal / Home Page](https://www.si.edu/openaccess/devtools)
 
 
+### Victoria & Albert Museum REST API
+
+The Victoria & Albert Museum API is designed as a RESTful interface to our collections and what we know about them. It returns all items in the database (paginated) in XML or JSON format. The purpose of the V&A API is to maximise access to all our collections and encourage use of them.
+
+> **SEE:**:
+> [API Endpoint](http://www.vam.ac.uk/api) and 
+> [API Portal / Home Page](http://www.vam.ac.uk/api/)
+
 ### Why there are not Spanish museum?
 
 Just because there is a serious lack of Spanish Museums Open API availability. So, I decided to start with some of the Museums which provide Open API. Some of then are listed in this
