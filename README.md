@@ -37,7 +37,7 @@ and the National Zoo.
 
 ### Victoria & Albert Museum REST API
 
-The Victoria & Albert Museum API is designed as a RESTful interface to our collections and what we know about them. It returns all items in the database (paginated) in XML or JSON format. The purpose of the V&A API is to maximise access to all our collections and encourage use of them.
+The Victoria & Albert Museum API is designed as a RESTful interface to our collections and what we know about them. It returns all items in the database (paginated) in XML or JSON format. The purpose of the V&A API is to maximize access to all our collections and encourage use of them.
 
 > **SEE:**:
 > [API Endpoint](http://www.vam.ac.uk/api) and 
