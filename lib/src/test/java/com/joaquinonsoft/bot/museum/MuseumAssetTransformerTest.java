@@ -26,6 +26,10 @@ import org.junit.jupiter.api.Test;
 
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
+import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Images;
+import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.PrimaryMaker;
+import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Record;
+
 
 public class MuseumAssetTransformerTest {
 	@Test
@@ -43,4 +47,25 @@ public class MuseumAssetTransformerTest {
 		assertEquals("1765–85", asset.getDate());
 		assertEquals("https://images.metmuseum.org/CRDImages/ad/original/56568.jpg", asset.getImageLink());
 	}
+	
+	@Test
+	public void toMusseumAssetFromVictoriaAndAlbertMuseum() {
+		Record vaRecored = new Record();
+		PrimaryMaker maker = new PrimaryMaker();
+		maker.setName("Rose Emma Drummond");
+		vaRecored.setPrimaryMaker(maker);
+		vaRecored.setPrimaryTitle("Miss. Margaret Taylor ");;
+		vaRecored.setPrimaryDate("1819");
+		Images imgs = new Images();
+		imgs.setPrimaryThumbnail("https://framemark.vam.ac.uk/collections/2013GU9998/full/!100,100/0/default.jpg");
+		vaRecored.setImages(imgs);
+		
+		MuseumAsset asset = MuseumAssetTransformer.toMusseumAsset(vaRecored);
+		assertNotNull(asset);
+		assertEquals("Miss. Margaret Taylor ", asset.getTitle());
+		assertEquals("Rose Emma Drummond", asset.getArtistName());
+		assertEquals("1819", asset.getDate());
+		assertEquals("https://framemark.vam.ac.uk/collections/2013GU9998/full/!100,100/0/default.jpg", 
+				asset.getImageLink());
+	}	
 }
