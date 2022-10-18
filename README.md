@@ -33,7 +33,9 @@ and the National Zoo.
 > **SEE:**
 > [API Endpoint](https://api.si.edu/openaccess/api/v1.0/) and
 > [API Portal / Home Page](https://www.si.edu/openaccess/devtools)
+> [OpenAccess](https://github.com/Smithsonian/OpenAccess)
 
+> **IMPORTANT**: To get and API key visit: [API Key Signup](https://api.data.gov/signup/)
 
 ### Victoria & Albert Museum REST API
 
