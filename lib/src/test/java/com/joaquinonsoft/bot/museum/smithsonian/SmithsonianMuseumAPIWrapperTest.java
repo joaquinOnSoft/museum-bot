@@ -24,28 +24,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
+import com.joaquinonsoft.bot.museum.AbstractMuseumAPIWrapperTest;
 
-class SmithsonianMuseumAPIWrapperTest {
-	private static SmithsonianMuseumAPIWrapper wrapper;
+class SmithsonianMuseumAPIWrapperTest extends AbstractMuseumAPIWrapperTest{
 	
 	@BeforeAll 
 	public static void setup() {
 		wrapper = new SmithsonianMuseumAPIWrapper();
 	}
 	
-	
-	@Test
-	void getRandomAsset() {
-		MuseumAsset asset = wrapper.getRandomAsset();
-		assertNotNull(asset);
-		assertNotNull(asset.getTitle());
-		assertNotNull(asset.getArtistName());
-	}
-	
 	@Test
 	void getRandomCategory() {
-		SmithsonianCategory cat = wrapper.getRandomCategory();
+		SmithsonianMuseumAPIWrapper wrapper2 = new SmithsonianMuseumAPIWrapper();
+		SmithsonianCategory cat = wrapper2.getRandomCategory();
 		
 		assertNotNull(cat);
 		assertTrue(cat == SmithsonianCategory.ART_DESING ||

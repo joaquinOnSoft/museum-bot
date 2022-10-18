@@ -19,20 +19,13 @@
  */
 package com.joaquinonsoft.bot.museum.met;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.BeforeAll;
+import com.joaquinonsoft.bot.museum.AbstractMuseumAPIWrapperTest;
 
-import org.junit.jupiter.api.Test;
-
-import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
-
-public class MetMuseumAPIWrapperTest {
+public class MetMuseumAPIWrapperTest extends AbstractMuseumAPIWrapperTest{
 	
-	@Test
-	public void getRandomAsset() {
-		MetMuseumAPIWrapper wrapper = new MetMuseumAPIWrapper();
-		MuseumAsset asset = wrapper.getRandomAsset();
-		assertNotNull(asset);
-		assertNotNull(asset.getTitle());
-		assertNotNull(asset.getArtistName());
+	@BeforeAll 
+	public static void setup() {
+		wrapper = new MetMuseumAPIWrapper();
 	}
 }

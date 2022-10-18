@@ -133,6 +133,8 @@ public class SmithsonianMuseumAPI extends AbstractAPIWrapper {
 		SmithsonianCategorySearchContents smithsonianContent= null;
 		String url = URL_BASE + METHOD_CATEGORY_SEARCH.replace(PATTERN_CAT, category.toString());
 		
+		log.debug("URL: " + url);
+		
 		List<NameValuePair> params = new LinkedList<NameValuePair>();
 		params.add(new BasicNameValuePair("api_key", apiKey));
 		params.add(new BasicNameValuePair("q", q));
