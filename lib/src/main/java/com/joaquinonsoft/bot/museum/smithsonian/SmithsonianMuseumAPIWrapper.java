@@ -28,7 +28,6 @@ import com.joaquinonsoft.util.RandomUtil;
 
 public class SmithsonianMuseumAPIWrapper implements IMuseumAPIWrapper {
 
-	private static final String QUERY_ALL = "*";
 	private static final int PAGE_SIZE = 10;
 	
 	@Override
