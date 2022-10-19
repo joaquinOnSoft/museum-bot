@@ -1,9 +1,8 @@
-package com.joaquinonsoft.bot.museum.smithsonian;
+package com.joaquinonsoft.bot.museum.victoriaandalbert;
 
 import com.joaquinonsoft.bot.museum.IMuseumAPIWrapper;
 import com.joaquinonsoft.bot.museum.MuseumAssetTransformer;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
-import com.joaquinonsoft.bot.museum.victoriaandalbert.VictoriaAndAlbertMusumAPI;
 import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Record;
 import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.VictoriaAndAlbertRecords;
 import com.joaquinonsoft.util.RandomUtil;
@@ -15,6 +14,9 @@ public class VictoriaAndAlbertMuseumWrapper implements IMuseumAPIWrapper {
 		api = new VictoriaAndAlbertMusumAPI();
 	}
 	
+	/**
+	 * Provides a random asset from the Victoria & Albert Museum catalog
+	 */
 	@Override
 	public MuseumAsset getRandomAsset() {
 		MuseumAsset asset = null;
