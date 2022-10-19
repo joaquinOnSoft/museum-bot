@@ -19,6 +19,9 @@
  */
 package com.joaquinonsoft.bot.museum.smithsonian;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.joaquinonsoft.bot.museum.IMuseumAPIWrapper;
 import com.joaquinonsoft.bot.museum.MuseumAssetTransformer;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
@@ -30,38 +33,70 @@ public class SmithsonianMuseumAPIWrapper implements IMuseumAPIWrapper {
 
 	private static final int PAGE_SIZE = 10;
 	
+	private static final int MAX_RETRIES = 1;
+	
+	protected static final Logger log = LogManager.getLogger(SmithsonianMuseumAPIWrapper.class);
+	
+	/**
+	 * Provides a random asset from the Smithsonian Museum catalog
+	 * <strong>NOTE:</strong> From time to time, 
+	 * <strong>/category/:cat/search</strong> method 
+	 * returns an valid but empty result set, even for valid request. 
+	 * It looks like this: 
+	 * <code>
+	 * {
+	 *     "status": 200,
+	 *     "responseCode": 1,
+	 *     "response": {
+     *     "rows": [],
+	 *         "rowCount": 0,
+	 *         "message": "no results found"
+	 *     }
+	 * }
+	 * </code>
+	 * So, a <strong>retry policy</strong> has been implemented
+	 */
 	@Override
 	public MuseumAsset getRandomAsset() {
 		MuseumAsset asset = null;
+		int retries = 0;
+		
 		SmithsonianCategory cat = getRandomCategory();
 		
 		SmithsonianMuseumAPI api = new SmithsonianMuseumAPI();
-		SmithsonianCategorySearchContents contents = api.categorySearch(cat, QUERY_ALL);
-		if(contents != null && contents.getResponse() != null) {
-			int numRows = contents.getResponse().getRowCount();
-			if(numRows > 0) {
-				int index = RandomUtil.nextInt(0, numRows - 1);
-				
-				Row row = null;
-				
-				if(index >= PAGE_SIZE) {					
-					contents = api.categorySearch(cat, QUERY_ALL, index);
-					if(contents != null && contents.getResponse() != null
-							&& contents.getResponse().getRows() != null 
-							&& contents.getResponse().getRows().size() > 0) {
-						row = contents.getResponse().getRows().get(0);
+		
+		do {
+			log.debug("Retry #: " + retries);
+			
+			SmithsonianCategorySearchContents contents = api.categorySearch(cat, QUERY_ALL);
+			if(contents != null && contents.getResponse() != null) {
+				int numRows = contents.getResponse().getRowCount();
+				if(numRows > 0) {
+					int index = RandomUtil.nextInt(0, numRows - 1);
+					
+					Row row = null;
+					
+					if(index >= PAGE_SIZE) {					
+						contents = api.categorySearch(cat, QUERY_ALL, index);
+						if(contents != null && contents.getResponse() != null
+								&& contents.getResponse().getRows() != null 
+								&& contents.getResponse().getRows().size() > 0) {
+							row = contents.getResponse().getRows().get(0);
+						}
 					}
-				}
-				else {
-					row = contents.getResponse().getRows().get(index);
-				}
-				
-				if(row != null) {
-					asset = MuseumAssetTransformer.toMusseumAsset(row);
-				}
-
-			}				
-		}
+					else {
+						row = contents.getResponse().getRows().get(index);
+					}
+					
+					if(row != null) {
+						asset = MuseumAssetTransformer.toMusseumAsset(row);
+					}
+	
+				}				
+			}
+			
+			retries++;
+		}while(retries <= MAX_RETRIES);
 		
 		return asset;
 	}

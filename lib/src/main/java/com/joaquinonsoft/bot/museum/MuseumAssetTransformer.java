@@ -19,15 +19,21 @@
  */
 package com.joaquinonsoft.bot.museum;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Medium;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Name;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Row;
 import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Record;
+import com.joaquinonsoft.util.FileUtil;
 
 public class MuseumAssetTransformer {
 	private static final String LABEL_ARTIST = "Artist";
+
+	protected static final Logger log = LogManager.getLogger(FileUtil.class);
 
 	public static MuseumAsset toMusseumAsset(MetMuseumObject metObj) {
 		MuseumAsset asset = null;
@@ -41,6 +47,8 @@ public class MuseumAssetTransformer {
 					
 					);
 		}
+		
+		log.debug("MET asset: " + asset);
 		
 		return asset;
 	}
@@ -91,6 +99,8 @@ public class MuseumAssetTransformer {
 					);
 		}
 		
+		log.debug("Smithsonian asset: " + asset);
+
 		return asset;
 	}	
 	
@@ -116,6 +126,8 @@ public class MuseumAssetTransformer {
 					imageURL					
 					);
 		}
+				
+		log.debug("V&A asset: " + asset);
 		
 		return asset;
 	}

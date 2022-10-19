@@ -40,6 +40,9 @@ public class MetMuseumAPIWrapper implements IMuseumAPIWrapper{
 		api = new MetMuseumAPI();
 	}
 	
+	/**
+	 * Provides a random asset from the Metropolitan Museum catalog
+	 */
 	@Override
 	public MuseumAsset getRandomAsset() {
 		MuseumAsset asset = null;
