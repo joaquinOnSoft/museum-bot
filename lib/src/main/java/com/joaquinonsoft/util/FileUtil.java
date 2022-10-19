@@ -36,7 +36,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * 
- * @author Joaqu�n Garz�n
+ * @author Joaquín Garzón
  * @since 20.2 
  */
 public class FileUtil {

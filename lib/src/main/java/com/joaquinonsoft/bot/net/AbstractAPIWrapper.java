@@ -141,6 +141,8 @@ public abstract class AbstractAPIWrapper {
 	protected String get(String url, List<NameValuePair> headers, List<NameValuePair> params) {
 		String result = null;
 	
+		log.debug("GET: " + url);
+		
 		try {			
 			HttpGet httpGet = new HttpGet(url);
 			
@@ -176,6 +178,8 @@ public abstract class AbstractAPIWrapper {
 	protected String post(String url, List<NameValuePair> headers, List<HttpEntity> entities) {
 		String result = null;
 	
+		log.debug("POST: " + url);
+		
 		try {
 			HttpPost httpPost = new HttpPost(url);
 			if(headers != null) {
