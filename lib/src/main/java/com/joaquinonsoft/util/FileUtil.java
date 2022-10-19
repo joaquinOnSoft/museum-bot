@@ -51,7 +51,7 @@ public class FileUtil {
 	 * @return
 	 */
 	public static File getFileFromResources(String fileName) {
-	    System.out.println("Working Directory = " + System.getProperty("user.dir"));
+		log.debug("Working Directory = " + System.getProperty("user.dir"));
 
         URL resource = FileUtil.class.getClassLoader().getResource(fileName);
         if (resource == null) {
