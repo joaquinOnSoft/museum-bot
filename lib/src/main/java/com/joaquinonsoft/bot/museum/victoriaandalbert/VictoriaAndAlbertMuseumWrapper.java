@@ -1,5 +1,8 @@
 package com.joaquinonsoft.bot.museum.victoriaandalbert;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.joaquinonsoft.bot.museum.IMuseumAPIWrapper;
 import com.joaquinonsoft.bot.museum.MuseumAssetTransformer;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
@@ -8,6 +11,11 @@ import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.VictoriaAndAlbertReco
 import com.joaquinonsoft.util.RandomUtil;
 
 public class VictoriaAndAlbertMuseumWrapper implements IMuseumAPIWrapper {
+	
+	protected static final Logger log = LogManager.getLogger(VictoriaAndAlbertMuseumWrapper.class);
+	
+	private static final String IMG_SIZE_600_600 = "600,600";
+	
 	private VictoriaAndAlbertMusumAPI api = null;
 	
 	public VictoriaAndAlbertMuseumWrapper() {
@@ -39,6 +47,9 @@ public class VictoriaAndAlbertMuseumWrapper implements IMuseumAPIWrapper {
 						
 						if(record != null) {
 							asset = MuseumAssetTransformer.toMusseumAsset(record);
+							
+							String imgLink = asset.getImageLink();
+							asset.setImageLink(resizeImageLink(imgLink));
 						}
 					}
 				}
@@ -48,4 +59,15 @@ public class VictoriaAndAlbertMuseumWrapper implements IMuseumAPIWrapper {
 		return asset;
 	}
 
+	protected String resizeImageLink(String imgLink) {
+		String link = null;
+		
+		if(imgLink != null) {
+			link = imgLink.replace("100,100", IMG_SIZE_600_600);
+			
+			log.debug("Image link resized: " + link);
+		}
+		
+		return link;
+	}
 }
