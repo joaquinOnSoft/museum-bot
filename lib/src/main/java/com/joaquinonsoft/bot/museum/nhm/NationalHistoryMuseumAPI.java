@@ -19,6 +19,17 @@
  */
 package com.joaquinonsoft.bot.museum.nhm;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.joaquinonsoft.bot.museum.nhm.pojo.packagelist.NHMPackageList;
+import com.joaquinonsoft.bot.net.AbstractAPIWrapper;
+
 /**
  * <strong>Natural History Museum REST API</strong>
  * This REST API lets users access the data portal of 
@@ -34,6 +45,54 @@ package com.joaquinonsoft.bot.museum.nhm;
  * @see https://docs.ckan.org/en/latest/api/index.html
  * @see https://www.programmableweb.com/api/natural-history-museum-rest-api
  */
-public class NationalHistoryMuseumAPI {
+public class NationalHistoryMuseumAPI extends AbstractAPIWrapper {
 
+	private final int NO_VALUE = -1;
+	
+	private final String URL_BASE = "https://data.nhm.ac.uk/api/3";
+	
+	private final String METHOD_PACKAGE_LIST = "/action/package_list";
+
+	protected static final Logger log = LogManager.getLogger(NationalHistoryMuseumAPI.class);
+		
+	/**
+	 * Return a list of the names of the site’s datasets (packages).
+	 * @return list of strings
+	 * @see https://docs.ckan.org/en/latest/api/index.html#api-examples:~:text=logic.action.get-,%C2%B6,-API%20functions%20for
+	 */
+	public NHMPackageList packageList() {
+		return packageList(NO_VALUE, NO_VALUE);
+	}
+	
+	/**
+	 * Return a list of the names of the site’s datasets (packages).
+	 * @param limit (int) – if given, the list of datasets will be broken 
+	 * into pages of at most limit datasets per page and only one page 
+	 * will be returned at a time (optional)
+	 * @param offset (int) – when limit is given, the offset to start 
+	 * returning packages from
+	 * @return list of strings
+	 * @see https://docs.ckan.org/en/latest/api/index.html#api-examples:~:text=logic.action.get-,%C2%B6,-API%20functions%20for
+	 */
+	public NHMPackageList packageList(int limit, int offset) {
+		NHMPackageList packageList= null;
+		String url = URL_BASE + METHOD_PACKAGE_LIST;
+		
+		log.debug("URL: " + url);
+		
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
+		if(limit != NO_VALUE) {
+			params.add(new BasicNameValuePair("limit", Integer.toString(limit)));	
+		}
+		if(offset != NO_VALUE) {
+			params.add(new BasicNameValuePair("offset", Integer.toString(offset)));	
+		}
+		
+		String result = get(url, null, params);
+		if(result != null) {
+			packageList = (NHMPackageList) jsonStringToObject(result, NHMPackageList.class);
+		}		
+		
+		return packageList;
+	}
 }
