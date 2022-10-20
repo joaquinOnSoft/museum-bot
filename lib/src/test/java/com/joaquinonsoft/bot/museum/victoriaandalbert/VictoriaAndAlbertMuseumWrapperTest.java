@@ -1,17 +1,29 @@
 package com.joaquinonsoft.bot.museum.victoriaandalbert;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.joaquinonsoft.bot.museum.AbstractMuseumAPIWrapperTest;
+import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 
 public class VictoriaAndAlbertMuseumWrapperTest extends AbstractMuseumAPIWrapperTest{	
 	@BeforeAll 
 	public static void setup() {
 		wrapper = new VictoriaAndAlbertMuseumWrapper();
 	}
+	
+	@Test
+	void getRandomAssetWithImgLinkResized() {
+		MuseumAsset asset = wrapper.getRandomAsset();
+		assertNotNull(asset);
+		String imgLink = asset.getImageLink();
+		assertNotNull(imgLink);
+		assertTrue(imgLink.contains("600,600"));
+	}	
 	
 	@Test
 	public void resizeImageLink() {
