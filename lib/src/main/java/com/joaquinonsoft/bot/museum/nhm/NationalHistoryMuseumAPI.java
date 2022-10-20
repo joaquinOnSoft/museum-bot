@@ -27,6 +27,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.joaquinonsoft.bot.museum.nhm.pojo.NHMPackageShow;
 import com.joaquinonsoft.bot.museum.nhm.pojo.packagelist.NHMPackageList;
 import com.joaquinonsoft.bot.net.AbstractAPIWrapper;
 
@@ -52,7 +53,8 @@ public class NationalHistoryMuseumAPI extends AbstractAPIWrapper {
 	private final String URL_BASE = "https://data.nhm.ac.uk/api/3";
 	
 	private final String METHOD_PACKAGE_LIST = "/action/package_list";
-
+	private final String METHOD_PACKAGE_SHOW = "/action/package_show";
+	
 	protected static final Logger log = LogManager.getLogger(NationalHistoryMuseumAPI.class);
 		
 	/**
@@ -94,5 +96,48 @@ public class NationalHistoryMuseumAPI extends AbstractAPIWrapper {
 		}		
 		
 		return packageList;
+	}
+	
+	/**
+	 * Return the metadata of a dataset (package) and its resources.
+	 * 
+	 * <strong>Parameters</strong>:
+	 * @param id (string) – the id or name of the dataset
+	 * <br></br>
+	 * <strong>NOTE</strong>: Other parameter not supported in this implementation
+	 * <br></br>
+	 * <ul>
+	 * 	<li>
+	 * 		<strong>use_default_schema</strong> (bool) – use default 
+	 * 		package schema instead of a custom schema defined with an IDatasetForm plugin (default: False)
+	 * 	</li>
+	 * 	<li>  
+	 * 		<strong>include_tracking</strong> (bool) – add tracking 
+	 * 		information to dataset and resources (default: False)
+	 * 	</li>
+	 * 	<li>  
+	 * 		<strong>include_plugin_data</strong> – Include the internal plugin 
+	 * 		data object (sysadmin only, optional, default:False)
+	 * 	</li> 
+	 * </ul>
+	 * <strong>Type</strong>
+	 * <strong>include_plugin_data</strong>: bool 
+	 * @return dictionary
+	 */
+	public NHMPackageShow packageShow(String id) {
+		NHMPackageShow resources= null;
+		String url = URL_BASE + METHOD_PACKAGE_SHOW;
+		
+		log.debug("URL: " + url);
+		
+		List<NameValuePair> params = new LinkedList<NameValuePair>();
+		params.add(new BasicNameValuePair("id", id));	
+		
+		String result = get(url, null, params);
+		if(result != null) {
+			resources = (NHMPackageShow) jsonStringToObject(result, NHMPackageShow.class);
+		}		
+		
+		return resources;
 	}
 }
