@@ -23,12 +23,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
+import com.joaquinonsoft.bot.museum.nhm.pojo.NHMPackageShow;
+import com.joaquinonsoft.bot.museum.nhm.pojo.Resource;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Medium;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Name;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Row;
 import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Record;
 import com.joaquinonsoft.util.FileUtil;
+import com.joaquinonsoft.util.RandomUtil;
 
 public class MuseumAssetTransformer {
 	private static final String LABEL_ARTIST = "Artist";
@@ -132,4 +135,18 @@ public class MuseumAssetTransformer {
 		return asset;
 	}
 	
+	public static MuseumAsset toMusseumAsset(com.joaquinonsoft.bot.museum.nhm.pojo.Resource resource, String author, String date) {
+		MuseumAsset asset = null;
+
+		if(resource != null) {
+			asset = new MuseumAsset(
+					resource.getName(),
+					author,
+					date,
+					resource.getUrl()
+					);
+		}
+		return null;
+	}
+
 }
