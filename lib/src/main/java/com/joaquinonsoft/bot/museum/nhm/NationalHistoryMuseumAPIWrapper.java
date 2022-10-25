@@ -7,11 +7,11 @@ import com.joaquinonsoft.bot.museum.nhm.pojo.packagelist.NHMPackageList;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 import com.joaquinonsoft.util.RandomUtil;
 
-public class NationalHistoryMuseumWrapper implements IMuseumAPIWrapper {
+public class NationalHistoryMuseumAPIWrapper implements IMuseumAPIWrapper {
 
 	private NationalHistoryMuseumAPI api = null;
 	
-	public NationalHistoryMuseumWrapper() {
+	public NationalHistoryMuseumAPIWrapper() {
 		api = new NationalHistoryMuseumAPI();
 	}
 	
@@ -37,7 +37,8 @@ public class NationalHistoryMuseumWrapper implements IMuseumAPIWrapper {
 						&& packageShow.getSuccess() == true
 						&& packageShow.getResult() != null) {
 
-					int selectedResource = RandomUtil.nextInt(0, packageShow.getResult().getNumResources() - 1)
+					int selectedResource = RandomUtil.nextInt(0, packageShow.getResult().getNumResources() - 1);
+					
 					asset = MuseumAssetTransformer.toMusseumAsset(
 							packageShow.getResult().getResources().get(selectedResource),
 							packageShow.getResult().getAuthor(),

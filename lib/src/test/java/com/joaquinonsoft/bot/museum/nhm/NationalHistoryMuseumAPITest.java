@@ -11,10 +11,10 @@ import com.joaquinonsoft.bot.museum.nhm.pojo.NHMPackageShow;
 import com.joaquinonsoft.bot.museum.nhm.pojo.packagelist.NHMPackageList;
 
 public class NationalHistoryMuseumAPITest {
-	NationalHistoryMuseumAPI api = null;
+	private static NationalHistoryMuseumAPI api = null;
 	
 	@BeforeAll
-	public void setup() {
+	public static void setup() {
 		api = new NationalHistoryMuseumAPI();
 	}
 	

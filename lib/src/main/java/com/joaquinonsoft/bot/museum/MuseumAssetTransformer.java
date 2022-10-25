@@ -23,7 +23,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.joaquinonsoft.bot.museum.met.pojo.MetMuseumObject;
-import com.joaquinonsoft.bot.museum.nhm.pojo.NHMPackageShow;
 import com.joaquinonsoft.bot.museum.nhm.pojo.Resource;
 import com.joaquinonsoft.bot.museum.pojo.MuseumAsset;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Medium;
@@ -31,13 +30,17 @@ import com.joaquinonsoft.bot.museum.smithsonian.pojo.Name;
 import com.joaquinonsoft.bot.museum.smithsonian.pojo.Row;
 import com.joaquinonsoft.bot.museum.victoriaandalbert.pojo.Record;
 import com.joaquinonsoft.util.FileUtil;
-import com.joaquinonsoft.util.RandomUtil;
 
 public class MuseumAssetTransformer {
 	private static final String LABEL_ARTIST = "Artist";
 
 	protected static final Logger log = LogManager.getLogger(FileUtil.class);
 
+	/**
+	 * Transforms a Metropolitan Art Museum (MET) asset to a MuseumAsset object
+	 * @param metObj
+	 * @return
+	 */
 	public static MuseumAsset toMusseumAsset(MetMuseumObject metObj) {
 		MuseumAsset asset = null;
 		
@@ -56,6 +59,11 @@ public class MuseumAssetTransformer {
 		return asset;
 	}
 	
+	/**
+	 * Transforms a Smithsonian Museum asset to a MuseumAsset object
+	 * @param smithsonianContent
+	 * @return
+	 */
 	public static MuseumAsset toMusseumAsset(Row smithsonianContent) {
 		MuseumAsset asset = null;
 		
@@ -107,6 +115,11 @@ public class MuseumAssetTransformer {
 		return asset;
 	}	
 	
+	/**
+	 * Transforms a Victoria & Albert Museum asset to a MuseumAsset object
+	 * @param vaRecord
+	 * @return
+	 */
 	public static MuseumAsset toMusseumAsset(Record vaRecord) {
 		MuseumAsset asset = null;
 		
@@ -135,7 +148,14 @@ public class MuseumAssetTransformer {
 		return asset;
 	}
 	
-	public static MuseumAsset toMusseumAsset(com.joaquinonsoft.bot.museum.nhm.pojo.Resource resource, String author, String date) {
+	/**
+	 * Transforms a National History Museum asset to a MuseumAsset object
+	 * @param resource
+	 * @param author
+	 * @param date
+	 * @return
+	 */
+	public static MuseumAsset toMusseumAsset(Resource resource, String author, String date) {
 		MuseumAsset asset = null;
 
 		if(resource != null) {
@@ -146,7 +166,6 @@ public class MuseumAssetTransformer {
 					resource.getUrl()
 					);
 		}
-		return null;
+		return asset;
 	}
-
 }
