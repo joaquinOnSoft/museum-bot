@@ -8,4 +8,5 @@
  */
 
 rootProject.name = 'museum-bot'
-include('lib')
+include('mb-core')
+include('mb-command-line-launcher')

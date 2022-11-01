@@ -1,0 +1,24 @@
+jar {   
+	//archiveFileName = "${rootProject.name}-${project.name}-${archiveVersion.get()}.jar"	
+	archiveFileName = "${rootProject.name}-core-${archiveVersion.get()}.jar"
+	 
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+    //https://discuss.gradle.org/t/generate-runnable-jar-pakage-dependencies/28171
+	exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'	
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE    	
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore
+	implementation 'org.apache.httpcomponents:httpcore:4.4.15'	
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	implementation 'org.apache.httpcomponents:httpclient:4.5.13'	
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime
+	implementation 'org.apache.httpcomponents:httpmime:4.5.13'
+	
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'		
+}

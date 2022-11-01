@@ -1,0 +1,28 @@
+/*
+jar {
+   //archiveFileName = "${rootProject.name}-${project.name}-${archiveVersion.get()}.jar"
+   archiveFileName = "${rootProject.name}-command-line-launcher-${archiveVersion.get()}.jar"
+   
+    manifest {
+        attributes 'Implementation-Title': 'Museum Bot: Command line launcher',  
+         'Implementation-Version': version,
+         //'Main-Class': 'com.opentext.explore.importer.reddit.RedditImporterLauncher'
+    }
+      
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+    //https://discuss.gradle.org/t/generate-runnable-jar-pakage-dependencies/28171
+   exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'  
+   duplicatesStrategy = DuplicatesStrategy.EXCLUDE    
+}
+*/
+
+dependencies {
+   implementation project(':core')
+   
+   // Apache Commons CLI provides a simple API for presenting, processing and validating a Command Line Interface.      
+   // https://mvnrepository.com/artifact/commons-cli/commons-cli
+   implementation 'commons-cli:commons-cli:1.5.0'     
+}
