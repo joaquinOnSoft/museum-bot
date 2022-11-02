@@ -20,9 +20,17 @@ jar {
 */
 
 dependencies {
-   implementation project(':core')
+   implementation project(':mb-core')
+
    
    // Apache Commons CLI provides a simple API for presenting, processing and validating a Command Line Interface.      
    // https://mvnrepository.com/artifact/commons-cli/commons-cli
    implementation 'commons-cli:commons-cli:1.5.0'     
+   
+	// A Java library for the Twitter API
+	// https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
+	implementation 'org.twitter4j:twitter4j-core:4.1.2'
+	// A Java library for the Twitter API
+	// https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream
+	implementation 'org.twitter4j:twitter4j-stream:4.0.7'   
 }
