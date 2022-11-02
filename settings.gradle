@@ -9,4 +9,5 @@
 
 rootProject.name = 'museum-bot'
 include('mb-core')
+include('mb-publisher-twitter')
 include('mb-command-line-launcher')
