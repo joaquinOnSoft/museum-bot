@@ -46,6 +46,7 @@ public class MuseumAssetTransformerTest {
 		assertEquals("", asset.getArtistName());
 		assertEquals("1765–85", asset.getDate());
 		assertEquals("https://images.metmuseum.org/CRDImages/ad/original/56568.jpg", asset.getImageLink());
+		assertEquals(MuseumAsset.MET, asset.getMuseum());
 	}
 	
 	@Test
@@ -67,5 +68,6 @@ public class MuseumAssetTransformerTest {
 		assertEquals("1819", asset.getDate());
 		assertEquals("https://framemark.vam.ac.uk/collections/2013GU9998/full/!100,100/0/default.jpg", 
 				asset.getImageLink());
+		assertEquals(MuseumAsset.VICTORIA_AND_ALBERT_MUSEUM, asset.getMuseum());
 	}	
 }

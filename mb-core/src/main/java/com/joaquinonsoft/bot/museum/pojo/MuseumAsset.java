@@ -20,19 +20,35 @@
 package com.joaquinonsoft.bot.museum.pojo;
 
 public class MuseumAsset {
+	
+	public static final String SMITHSONIAN = "Smithsonian Institution";
+	public static final String VICTORIA_AND_ALBERT_MUSEUM = "Victoria & Albert Museum";
+	public static final String MET = "Metropolitan Museum of Art";
+	public static final String NHM = "National History Museum";
+	
 	private String title;
 	private String artistName;
 	private String date;
 	private String imageLink;
+	private String museum;
 
 	public MuseumAsset() {		
 	}
+
+	public MuseumAsset(String museum) {
+		this.museum = museum;
+	}
 	
 	public MuseumAsset(String title, String artistName, String date, String imageLink) {
+		this(title, artistName, date, imageLink, null);
+	}
+	
+	public MuseumAsset(String title, String artistName, String date, String imageLink, String museum) {
 		this.title = title;
 		this.artistName = artistName;
 		this.date = date;
 		this.imageLink = imageLink;
+		this.museum = museum;
 	}
 	
 	public String getTitle() {
@@ -67,6 +83,14 @@ public class MuseumAsset {
 		this.imageLink = imageLink;
 	}
 
+	public String getMuseum() {
+		return museum;
+	}
+
+	public void setMuseum(String museum) {
+		this.museum = museum;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -74,7 +98,8 @@ public class MuseumAsset {
 			.append("title=").append(title).append(", ")
 			.append("artistName=").append(artistName).append(", ")
 			.append("date=").append(date).append(", ")
-			.append("imageLink=").append(imageLink)
+			.append("imageLink=").append(imageLink).append(", ")
+			.append("museum=").append(museum)
 			.append("]");
 		
 		return str.toString();

@@ -49,8 +49,8 @@ public class MuseumAssetTransformer {
 					metObj.getTitle(),
 					metObj.getArtistDisplayName(),
 					metObj.getObjectDate(),
-					metObj.getPrimaryImage()
-					
+					metObj.getPrimaryImage(),
+					MuseumAsset.MET
 					);
 		}
 		
@@ -106,7 +106,8 @@ public class MuseumAssetTransformer {
 					smithsonianContent.getTitle(),
 					artistName,
 					date,
-					imageLink					
+					imageLink,
+					MuseumAsset.SMITHSONIAN
 					);
 		}
 		
@@ -139,7 +140,8 @@ public class MuseumAssetTransformer {
 					vaRecord.getPrimaryTitle(),
 					author,
 					vaRecord.getPrimaryDate(),
-					imageURL					
+					imageURL,
+					MuseumAsset.VICTORIA_AND_ALBERT_MUSEUM
 					);
 		}
 				
@@ -163,7 +165,8 @@ public class MuseumAssetTransformer {
 					resource.getName(),
 					author,
 					date,
-					resource.getUrl()
+					resource.getUrl(),
+					MuseumAsset.NHM
 					);
 		}
 		return asset;

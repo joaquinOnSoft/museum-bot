@@ -23,6 +23,7 @@ public class VictoriaAndAlbertMuseumWrapperTest extends AbstractMuseumAPIWrapper
 		String imgLink = asset.getImageLink();
 		assertNotNull(imgLink);
 		assertTrue(imgLink.contains("600,600"));
+		assertEquals(MuseumAsset.VICTORIA_AND_ALBERT_MUSEUM, asset.getMuseum());
 	}	
 	
 	@Test

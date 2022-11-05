@@ -1,5 +1,6 @@
 package com.joaquinonsoft.bot.museum.nhm;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -24,6 +25,7 @@ public class NationalHistoryMuseumAPIWrapperTest {
 		assertNotNull(asset.getArtistName());
 		assertNotNull(asset.getDate());
 		assertNotNull(asset.getImageLink());
+		assertEquals(MuseumAsset.NHM, asset.getMuseum());
 	
 	}
 }
