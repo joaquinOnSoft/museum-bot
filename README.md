@@ -59,24 +59,9 @@ The Victoria & Albert Museum API is designed as a RESTful interface to our colle
 Just because there is a serious lack of Spanish Museums Open API availability. So, I decided to start with some of the Museums which provide Open API. Some of then are listed in this
 article: [Top 10 APIs for Museums](https://www.programmableweb.com/news/top-10-apis-museums/brief/2020/12/26)
 
-## Twitter  API
+## Publishers
 
-**Twitter publisher** uses [Twitter4J](https://twitter4j.org/). Twitter4J is a 100% 
-pure Java library for the Twitter API licensed under Apache License 2.0.
+There are several publisher for different output channels:
 
-
-There are a number of properties available for configuring [Twitter4J](https://twitter4j.org/). You can specify properties via **twitter4j.properties** file as follows : 
-
-### via twitter4j.properties
-Standard properties file named **"twitter4j.properties"**. Place it to either the current directory, root of the CLASSPATH directory.
-
-```
-oauth.consumerKey=*********************
-oauth.consumerSecret=******************************************
-oauth.accessToken=**************************************************
-oauth.accessTokenSecret=******************************************
-```
-
-> SEE: [Twitter4J: Generic properties](http://twitter4j.org/en/configuration.html)
-
-> NOTE: You need a [Twitter Developer](https://developer.twitter.com/en) account to get access to the Twitter Stream.
+[Twitter  Publisher](doc/twitter-publisher.md) **Under development!!!**
+Telegram **Planed**
