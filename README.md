@@ -22,7 +22,7 @@ resolution images.
 
 ### Natural History Museum API
 
-The Natural History Museum REST APITrack this API lets users access the data Portal of London's Natural History Museum to retrieve collection and research datasets for use in software or applications. The datasets, returned in JSON, hold 4/6 million specimen records from the Museum's Zoology, Botany, Mineralogy, Palaeontology and Entomology collections.
+This REST API lets users access the data portal of London's Natural History Museum to retrieve collection and research datasets for use in software or applications. The datasets, returned in JSON, hold 2.7 million specimen records from the Museum’s Zoology, Botany, Mineralogy, Palaeontology and Entomology collections.
 
 > **SEE:**
 > [API Endpoint](http://data.nhm.ac.uk/api/3)
