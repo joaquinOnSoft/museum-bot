@@ -1,6 +1,7 @@
 package com.joaquinonsoft.bot.museum.publisher;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
@@ -25,7 +26,7 @@ public class PublisherTwitter implements IPublisher {
 	private static final int TWITT_MAX_LENGTH = 280;
 	private static final Logger log = LogManager.getLogger(PublisherTwitter.class);
 
-	protected String toStatus(MuseumAsset asset) {
+	protected String toStatusMessage(MuseumAsset asset) {
 		StringBuilder status = new StringBuilder();
 
 		if(asset != null) {
@@ -67,28 +68,29 @@ public class PublisherTwitter implements IPublisher {
 	public boolean publish(MuseumAsset asset) {
 		Twitter twitter = Twitter.getInstance();
 		Status status = null;
-		/*
+		
 		try {
 			// post a tweet link with image
-			String statusMessage = toStatus(asset);
+			String statusMessage = toStatusMessage(asset);
 			// Creates a URL with file protocol and convert it into File object.
 	        File imagefile = FileUtils.toFile(new URL(asset.getImageLink()));
-			//File imagefile = FileUtils.copyURLToFile(asset.getImageLink(), f);
-
-			long[] mediaIds = new long[1];
+	        
+			long[] mediaIds = new long[1];			
 			UploadedMedia media = twitter.v1().tweets().uploadMedia(imagefile);
-			mediaIds[0] = media.getMediaId();
+		    mediaIds[0] = media.getMediaId();
 
-			StatusUpdate statusUpdate = new StatusUpdate(statusMessage);
-			statusUpdate.setMediaIds(mediaIds);
-
-			status = twitter.updateStatus(statusUpdate);
-
+		    StatusUpdate statusUpdate = StatusUpdate.of(statusMessage);
+		    statusUpdate.mediaIds(mediaIds) ;		  
+					
+			status = twitter.v1().tweets().updateStatus(statusUpdate);
+			
 			System.out.println("Successfully updated the status to [" + status.getText() + "]."); 
 		} catch (TwitterException e) {
 			log.error("Publishing on Twitter: ", e);
+		} catch (MalformedURLException e) {
+			log.error("Invalid museum asset URL: ", e);
 		}
-		*/
+		
 		log.info("Successfully updated the status to [" + status.getText() + "].");
 
 		return false; //TODO result true when successful 
