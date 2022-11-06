@@ -63,5 +63,5 @@ article: [Top 10 APIs for Museums](https://www.programmableweb.com/news/top-10-a
 
 There are several publisher for different output channels:
 
-[Twitter  Publisher](doc/twitter-publisher.md) **Under development!!!**
-Telegram **Planed**
+ - [Twitter  Publisher](doc/twitter-publisher.md) **Under development!!!**
+ - Telegram **Planed**
