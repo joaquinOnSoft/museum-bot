@@ -8,6 +8,7 @@ a one or several channels like Twitter, Telegram...
 This project extract information for the following sources:	
 
 ### Metropolitan Museum of Art Met Collection API
+
 New York City's Metropolitan Museum of Art contains over 5000 
 years of art from around the world in its collection. The 
 Metropolitan Museum of Art Met Collection APITrack this API 
@@ -18,6 +19,14 @@ all of the Met's Open Access data and to corresponding high
 resolution images.
 
 > **SEE:** [The Metropolitan Museum of Art Collection API](https://metmuseum.github.io/)
+
+### Natural History Museum API
+
+The Natural History Museum REST APITrack this API lets users access the data Portal of London's Natural History Museum to retrieve collection and research datasets for use in software or applications. The datasets, returned in JSON, hold 4/6 million specimen records from the Museum's Zoology, Botany, Mineralogy, Palaeontology and Entomology collections.
+
+> **SEE:**
+> [API Endpoint](http://data.nhm.ac.uk/api/3)
+> [API Portal / Home Page](https://data.nhm.ac.uk/about/download)
 
 ### Smithsonian Institution Open Access API
 

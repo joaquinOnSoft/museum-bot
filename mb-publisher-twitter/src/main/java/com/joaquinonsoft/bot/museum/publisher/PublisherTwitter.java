@@ -90,8 +90,9 @@ public class PublisherTwitter implements IPublisher {
 		} catch (MalformedURLException e) {
 			log.error("Invalid museum asset URL: ", e);
 		}
-		
-		log.info("Successfully updated the status to [" + status.getText() + "].");
+		if (status != null) {
+			log.info("Successfully updated the status to [" + status.getText() + "].");
+		}
 
 		return false; //TODO result true when successful 
 	}
