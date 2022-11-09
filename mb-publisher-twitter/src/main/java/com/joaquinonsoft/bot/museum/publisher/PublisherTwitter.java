@@ -38,7 +38,7 @@ public class PublisherTwitter implements IPublisher {
 			if( length < TWITT_MAX_LENGTH &&
 					asset.getMuseum() != null &&
 					asset.getMuseum().length() + length <= TWITT_MAX_LENGTH){
-				status.append(asset.getMuseum());
+				status.append("\n").append(asset.getMuseum());
 			}
 		}
 
@@ -52,8 +52,16 @@ public class PublisherTwitter implements IPublisher {
 	 */
 	protected File generateTmpFile(String extension) {
 		String tDir = System.getProperty("java.io.tmpdir"); 
-		String path = tDir +  File.pathSeparator + FileUtil.getRandomFileName(extension); 
-		File file = new File(path); 
+		StringBuilder path = new StringBuilder();
+		path.append(tDir);
+		
+		if(!tDir.endsWith(File.separator)) {
+			path.append(File.separator);
+		}
+		
+		path.append( FileUtil.getRandomFileName(extension) ); 
+		
+		File file = new File(path.toString());  
 		file.deleteOnExit();
 		
 		return file;
