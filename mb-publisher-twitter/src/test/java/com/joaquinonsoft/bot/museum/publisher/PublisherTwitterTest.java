@@ -4,7 +4,6 @@ package com.joaquinonsoft.bot.museum.publisher;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -54,7 +53,8 @@ public class PublisherTwitterTest {
 	
 	@Test
 	public void publish() {
-		fail("TODO - implement");
+		boolean published = publisher.publish(asset);
+		assertTrue(published);
 	}
 
 }

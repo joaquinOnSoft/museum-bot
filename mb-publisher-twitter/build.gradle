@@ -25,10 +25,6 @@ dependencies {
 	//
 	// https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
 	implementation 'org.twitter4j:twitter4j-core:4.1.2'
-	// A Java library for the Twitter API
-	//
-	// https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream
-	implementation 'org.twitter4j:twitter4j-stream:4.0.7'   
 	
 	// The Apache Commons IO library contains utility classes, stream implementations,	 
 	// file filters, file comparators, endian transformation classes, and much more.

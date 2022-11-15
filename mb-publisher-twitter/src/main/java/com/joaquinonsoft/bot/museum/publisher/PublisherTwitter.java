@@ -1,8 +1,14 @@
 package com.joaquinonsoft.bot.museum.publisher;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -74,6 +80,7 @@ public class PublisherTwitter implements IPublisher {
 	 */
 	@Override
 	public boolean publish(MuseumAsset asset) {
+		boolean published = false;
 		Twitter twitter = Twitter.getInstance();
 		Status status = null;
 		
@@ -81,28 +88,32 @@ public class PublisherTwitter implements IPublisher {
 			// post a tweet link with image
 			String statusMessage = toStatusMessage(asset);
 			// Creates a URL with file protocol and convert it into File object.
-	        File imagefile = FileUtils.toFile(new URL(asset.getImageLink()));
+	        //File imagefile = FileUtils.toFile(new URL(asset.getImageLink()));
 	        
+			Path path = Paths.get("tmp-image");
+	        InputStream in = new URL(asset.getImageLink()).openStream();
+	        Files.copy(in, path, StandardCopyOption.REPLACE_EXISTING);
+	        /*
 			long[] mediaIds = new long[1];			
-			UploadedMedia media = twitter.v1().tweets().uploadMedia(imagefile);
+			UploadedMedia media = twitter.v1().tweets().uploadMedia(path.toFile());
 		    mediaIds[0] = media.getMediaId();
-
+	        */ 
 		    StatusUpdate statusUpdate = StatusUpdate.of(statusMessage);
-		    statusUpdate.mediaIds(mediaIds) ;		  
+		    //statusUpdate.mediaIds(mediaIds) ;		  
 					
 			status = twitter.v1().tweets().updateStatus(statusUpdate);
+			published = true;
 			
-			System.out.println("Successfully updated the status to [" + status.getText() + "]."); 
+			log.debug("Successfully updated the status to [" + status.getText() + "]."); 
 		} catch (TwitterException e) {
 			log.error("Publishing on Twitter: ", e);
 		} catch (MalformedURLException e) {
 			log.error("Invalid museum asset URL: ", e);
+		} catch (IOException e) {
+			log.error("URL to File: ", e);
 		}
-		if (status != null) {
-			log.info("Successfully updated the status to [" + status.getText() + "].");
-		}
-
-		return false; //TODO result true when successful 
+		
+		return published; //TODO result true when successful 
 	}
 
 }
